@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}entry.html{% endblock %}
+
+{% block content %}
+
+<h2>welcome to search4letters on the web!</h2>
+
+<form method='POST' action=".">{% csrf_token %}
+
+{% if form.errors %}
+<p class="errornote">Wrong! Please correct the error(s) below.</p>
+{% endif %}
+
+<table>
+<p>Use this form to submit a search request:</p>
+<tr><td>{{ form.phrase.label_tag }} {{ form.phrase }}</td></tr>
+<tr><td>{{ form.letters.label_tag }} {{ form.letters }}</td></tr>
+</table>
+<p>When you're ready, click this button:</p>
+<p><input value='Do it!' type='SUBMIT'></p>
+</form>
+
+<p><a href="{% url 'vsearch:viewlog' %}">Go To View Log</a></p>
+
+{% endblock %}

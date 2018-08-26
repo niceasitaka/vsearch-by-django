@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<title>{% block title %}test{% endblock %}</title>
+		
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% block stylesheet %}{% static "css/hf.css" %}{% endblock %}" />
+</head>
+<body>
+	{% if user.is_active %}
+    <h4 class="welcome">Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong> /
+                <a href="{% url 'logout' %}">Logout</a>
+    </h4>
+    {% else %}
+    <h4 class="welcome">Welcome, Anonymous /
+                <a href="{% url 'login' %}">Login</a>
+    </h4>
+    {% endif %}
+	
+    
+    
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

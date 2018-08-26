@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}vsearch_detail.html{% endblock %}
+
+{% block content %}
+
+<h2>Here are your results:</h2>
+
+<p>You submitted the following data:</p>
+<table>
+<tr><td>Phrase:</td><td>{{ object.phrase }}</td></tr>
+<tr><td>Letters:</td><td>{{ object.letters }}</td></tr>
+</table>
+
+<p>When "{{ object.phrase }}" is searched for "{{ object.letters }}", the following 
+results are returned:</p>
+<h3>{{ object.results }}</h3>
+
+<p><a href="{% url 'vsearch:viewlog' %}">Go To View Log</a></p>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}vsearch_list.html{% endblock %}
+
+{% block content %}
+
+
+    <h1>Vsearch Log</h1>
+    
+    <table class="change-list">
+        <tr>
+            <th>Time Stamp</th>
+			<th>IP Address</th>
+			<th>User Info</th>
+            <th>Phrase</th>
+            <th>Letters</th>
+            <th>Results</th>
+        </tr>
+    
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.ts }}</td>
+            <td>{{ item.ip }}</td>
+			<td>{{ item.browser_string }}</td>
+            <td><a href="{% url 'vsearch:result' item.id %}">{{ item.phrase }}</a></td>
+            <td>{{ item.letters }}</td>
+            <td>{{ item.results }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+<p><a href="{% url 'vsearch:entry' %}">Go To Search</a></p>	
+	
+{% endblock %}
